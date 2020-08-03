@@ -3,6 +3,7 @@ import React,{useState} from "react";
 import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
+import MealsNavigator from "./Navigation/MealNavigator"
 
 const fetchFonts = () =>{
   return Font.loadAsync({
@@ -23,12 +24,13 @@ export default function App() {
     );
   }
   
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app.....!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <MealsNavigator />
+  // return (
+  //   <View style={styles.container}>
+  //     <Text>Open up App.js to start working on your app.....!</Text>
+  //     <StatusBar style="auto" />
+  //   </View>
+  // );
 }
 
 const styles = StyleSheet.create({
