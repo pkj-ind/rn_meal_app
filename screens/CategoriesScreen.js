@@ -6,12 +6,12 @@ import {
   Button,
   FlatList,
   TouchableOpacity,
-  Platform
+  Platform,
 } from "react-native";
 // import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 
 import { CATEGORIES } from "../data/dummy-data";
-import Colors from '../constants/Colors';
+import Colors from "../constants/Colors";
 
 const CategoriesScreen = (props) => {
   const rederGridItem = (itemData) => {
@@ -19,7 +19,10 @@ const CategoriesScreen = (props) => {
       <TouchableOpacity
         style={styles.gridItem}
         onPress={() => {
-          props.navigation.navigate({ routeName: "CategoryMeals" });
+          props.navigation.navigate({
+            routeName: "CategoryMeals",
+            params: { categoryId: itemData.item.id },
+          });
         }}
       >
         <View>
@@ -30,11 +33,11 @@ const CategoriesScreen = (props) => {
   };
 
   CategoriesScreen.navigationOptions = {
-    title: 'Meal Categories',
+    headerTitle: "Meal Categories",
     headerStyle: {
-      backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''
+      backgroundColor: Platform.OS === "android" ? Colors.primaryColor : "",
     },
-    headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor
+    headerTintColor: Platform.OS === "android" ? "white" : Colors.primaryColor,
   };
 
   return (
