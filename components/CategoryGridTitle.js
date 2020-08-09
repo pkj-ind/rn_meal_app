@@ -17,19 +17,18 @@ const CategoryGridTitle = (props) => {
 
   return (
     <View style={styles.gridItem}>
-    <TouchableComp
-      onPress={props.onSelect}
-      style={{flex:1}}
-    >
-      <View style={{
-        ...styles.container,
-        backgroundColor: props.color
-      }}>
-        <Text style={styles.title} numberOfLines={2}>
-          {props.title}
-        </Text>
-      </View>
-    </TouchableComp>
+      <TouchableComp onPress={props.onSelect} style={{ flex: 1 }}>
+        <View
+          style={{
+            ...styles.container,
+            backgroundColor: props.color,
+          }}
+        >
+          <Text style={styles.title} numberOfLines={2}>
+            {props.title}
+          </Text>
+        </View>
+      </TouchableComp>
     </View>
   );
 };
@@ -43,17 +42,20 @@ const styles = StyleSheet.create({
     height: Dimensions.get("window").width / 2.5,
     // to restrict repple effect going out of child element
     borderRadius: Dimensions.get("window").width / 30,
-    overflow:"hidden"
+    overflow:
+      Platform.OS === "android" && Platform.Version >= 21
+        ? "hidden"
+        : "visible",
+    elevation: 5,
   },
   container: {
-    flex:1,
+    flex: 1,
     borderRadius: Dimensions.get("window").width / 30,
     padding: Dimensions.get("window").width / 30,
     shadowColor: "black",
     shadowOpacity: 0.3,
     shadowRadius: 10,
     shadowOffset: { width: 0, height: 2 },
-    elevation: 3,
     alignItems: "flex-end",
     justifyContent: "flex-end",
   },
