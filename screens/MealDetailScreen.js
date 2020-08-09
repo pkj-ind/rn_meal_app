@@ -1,20 +1,32 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 
-const MealDetailScreen = () => {
-    return (
-        <View style={styles.screen}>
-            <Text>Meal Detail Screen</Text>
-        </View>
-    )
-}
+import { MEALS } from "../data/dummy-data";
 
-export default MealDetailScreen
+const MealDetailScreen = (props) => {
+  const mealId = props.navigation.getParam("mealId");
+
+  return (
+    <View style={styles.screen}>
+      <Text>Meal Detail Screen</Text>
+    </View>
+  );
+};
+
+MealDetailScreen.navigationOptions = (navigateData) => {
+  const mealId = navigateData.navigation.getParam("mealId");
+  const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+
+  return {
+    headerTitle: selectedMeal.title,
+  };
+};
+export default MealDetailScreen;
 
 const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-      },
-})
+  screen: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
