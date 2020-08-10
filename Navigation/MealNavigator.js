@@ -13,6 +13,13 @@ import FavoriteMealScreen from "../screens/FavoriteMealScreen";
 import Colors from "../constants/Colors";
 import { Platform } from "react-native";
 
+const defaultStackNavOption = {
+  headerStyle: {
+    backgroundColor: Platform.OS === "android" ? Colors.primaryColor : "",
+  },
+  headerTintColor: Platform.OS === "android" ? "white" : Colors.primaryColor,
+};
+
 const MealsNavigator = createStackNavigator(
   {
     Categories: CategoriesScreen,
@@ -25,14 +32,17 @@ const MealsNavigator = createStackNavigator(
     "Meal Details": MealDetailScreen,
   },
   {
-    defaultNavigationOptions: {
-      headerTitle: "Meal Application",
-      headerStyle: {
-        backgroundColor: Platform.OS === "android" ? Colors.primaryColor : "",
-      },
-      headerTintColor:
-        Platform.OS === "android" ? "white" : Colors.primaryColor,
-    },
+    defaultNavigationOptions: defaultStackNavOption,
+  }
+);
+
+const FavNavigator = createStackNavigator(
+  {
+    Favourites: FavoriteMealScreen,
+    MealDetails: MealDetailScreen,
+  },
+  {
+    defaultNavigationOptions: defaultStackNavOption
   }
 );
 
@@ -45,18 +55,17 @@ const tabSreenConfig = {
           <Ionicons name="ios-restaurant" size={24} color={tabInfo.tintColor} />
         );
       },
-      tabBarColor:Colors.primaryColor
+      tabBarColor: Colors.primaryColor,
     },
-    
   },
   Favourite: {
-    screen: FavoriteMealScreen,
+    screen: FavNavigator,
     navigationOptions: {
       tabBarIcon: (tabInfo) => (
         <MaterialIcons name="favorite" size={24} color={tabInfo.tintColor} />
       ),
       tabBarLabel: "My Favorite",
-      tabBarColor:Colors.accentColor
+      tabBarColor: Colors.accentColor,
     },
   },
 };
@@ -65,10 +74,11 @@ const MealsFavNavigator =
     ? createMaterialBottomTabNavigator(tabSreenConfig, {
         activeColor: "white",
         inactiveColor: Colors.inactiveColor,
-        shifting: false,
-        barStyle:{ //if shifting false tabbar colour goes lighter, barStyle property helps here.
-          backgroundColor:Colors.primaryColor
-        }
+        shifting: true,
+        barStyle: {
+          //if shifting false tabbar colour goes lighter, barStyle property helps here.
+          backgroundColor: Colors.primaryColor,
+        },
       })
     : createBottomTabNavigator(tabSreenConfig, {
         tabBarOptions: {
