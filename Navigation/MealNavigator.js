@@ -1,3 +1,4 @@
+import React from "react";
 import { createStackNavigator } from "react-navigation-stack"; // react navigator 4
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createAppContainer } from "react-navigation";
@@ -38,12 +39,32 @@ const MealsFavNavigator = createBottomTabNavigator(
   {
     Meals: {
       screen: MealsNavigator,
+      navigationOptions: {
+        tabBarIcon: (tabInfo) => {
+          return (
+            <Ionicons
+              name="ios-restaurant"
+              size={25}
+              color={tabInfo.tintColor}
+            />
+          );
+        },
+      },
     },
-    Favourite: FavoriteMealScreen,
+    Favourite: {
+      screen: FavoriteMealScreen,
+      navigationOptions: {
+        tabBarIcon: (tabInfo) => (
+          <MaterialIcons name="favorite" size={24} color={tabInfo.tintColor} />
+        ),
+        tabBarLabel:"My Favorite"
+      },
+    },
   },
   {
     tabBarOptions: {
       activeTintColor: Colors.accentColor,
+      inactiveTintColor: Colors.inactiveColor,
     },
   }
 );
