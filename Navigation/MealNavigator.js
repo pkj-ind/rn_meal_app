@@ -89,12 +89,35 @@ const MealsFavNavigator =
         },
       });
 // Filter Navigator stack have only one screen
-const FilterNavigator = createStackNavigator({
-  Filter: FilterScreen,
-});
-const MainNavigator = createDrawerNavigator({
-  MealsFavs: MealsFavNavigator,
-  Filters: FilterNavigator,
-});
+const FilterNavigator = createStackNavigator(
+  {
+    Filter: FilterScreen,
+  },
+  {
+    // navigationOptions:{
+    // drawerLabel:"Filter!!"
+    // },
+    defaultNavigationOptions: defaultStackNavOption,
+  }
+);
+const MainNavigator = createDrawerNavigator(
+  {
+    MealsFavs: {
+      screen: MealsFavNavigator,
+      navigationOptions: {
+        drawerLabel: "Meals",
+      },
+    },
+    Filters: FilterNavigator,
+  },
+  {
+    contentOptions: {
+      activeTintColor: Colors.accentColor,
+      labelStyle: {
+        fontFamily:'open-sans-bold'
+      }
+    },
+  }
+);
 
 export default createAppContainer(MainNavigator);
