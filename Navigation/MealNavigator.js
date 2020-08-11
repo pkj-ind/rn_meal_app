@@ -1,6 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "react-navigation-stack"; // react navigator 4
 import { createBottomTabNavigator } from "react-navigation-tabs";
+import { createDrawerNavigator } from "react-navigation-drawer";
 import { createAppContainer } from "react-navigation";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
@@ -42,7 +43,7 @@ const FavNavigator = createStackNavigator(
     MealDetails: MealDetailScreen,
   },
   {
-    defaultNavigationOptions: defaultStackNavOption
+    defaultNavigationOptions: defaultStackNavOption,
   }
 );
 
