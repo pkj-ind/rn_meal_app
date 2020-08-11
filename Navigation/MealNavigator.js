@@ -10,6 +10,7 @@ import CategoriesScreen from "../screens/CategoriesScreen";
 import CategoryMealScreen from "../screens/CategoryMealScreen";
 import MealDetailScreen from "../screens/MealDetailScreen";
 import FavoriteMealScreen from "../screens/FavoriteMealScreen";
+import FilterScreen from "../screens/FilterScreen";
 
 import Colors from "../constants/Colors";
 import { Platform } from "react-native";
@@ -87,5 +88,13 @@ const MealsFavNavigator =
           inactiveTintColor: Colors.inactiveColor,
         },
       });
+// Filter Navigator stack have only one screen
+const FilterNavigator = createStackNavigator({
+  Filter: FilterScreen,
+});
+const MainNavigator = createDrawerNavigator({
+  MealsFavs: MealsFavNavigator,
+  Filters: FilterNavigator,
+});
 
-export default createAppContainer(MealsFavNavigator);
+export default createAppContainer(MainNavigator);
