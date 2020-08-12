@@ -1,17 +1,33 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 
 import { MEALS } from "../data/dummy-data";
-import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import HeaderButton from '../components/HeaderButton';
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import HeaderButton from "../components/HeaderButton";
+import { ScrollView } from "react-native-gesture-handler";
+import DefaultText from "../components/DefaultText";
 
 const MealDetailScreen = (props) => {
   const mealId = props.navigation.getParam("mealId");
+  const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
   return (
-    <View style={styles.screen}>
-      <Text>Meal Detail Screen</Text>
-    </View>
+    <ScrollView>
+      <Image source={{ uri: selectedMeal.imageUrl }} style={styles.mealImage} />
+      <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
+        <DefaultText>{selectedMeal.duration}m</DefaultText>
+        <DefaultText>{selectedMeal.complexity.toUpperCase()}</DefaultText>
+        <DefaultText>{selectedMeal.affordability.toUpperCase()}</DefaultText>
+      </View>
+      <View style={styles.receipe}>
+        <Text style={styles.title}>Ingredients:</Text>
+        {selectedMeal.ingredients.map(list=><Text key={list} style={styles.list}>{list}</Text>)}
+        
+        <Text style={styles.title}>Steps:</Text>
+        {selectedMeal.steps.map(list=><Text key={list} style={styles.list}>{list}</Text>)}
+
+      </View>
+    </ScrollView>
   );
 };
 
@@ -22,7 +38,7 @@ MealDetailScreen.navigationOptions = (navigateData) => {
   return {
     headerTitle: selectedMeal.title,
     headerRight: () => (
-      <HeaderButtons HeaderButtonComponent={HeaderButton} >
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
           title="Favourite"
           iconName="favorite"
@@ -37,9 +53,33 @@ MealDetailScreen.navigationOptions = (navigateData) => {
 export default MealDetailScreen;
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+  mealImage: {
+    height: 250,
+    width: "100%",
   },
+  mealRow: {
+    flexDirection: "row",
+  },
+  mealDetail: {
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-around",
+    paddingHorizontal: 10,
+    alignItems: "center",
+    marginVertical: 5,
+  },
+  title: {
+    fontFamily: "open-sans-bold",
+    fontSize: 18,
+    textAlign:"center"
+  },
+  receipe: {
+    marginHorizontal: 15,
+    padding: 10,
+  },
+  list:{
+    fontFamily: "open-sans",
+    fontSize: 16,
+    marginVertical:5,  
+  }
 });
