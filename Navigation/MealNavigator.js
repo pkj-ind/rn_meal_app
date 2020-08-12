@@ -13,11 +13,17 @@ import FavoriteMealScreen from "../screens/FavoriteMealScreen";
 import FilterScreen from "../screens/FilterScreen";
 
 import Colors from "../constants/Colors";
-import { Platform } from "react-native";
+import { Platform, Text } from "react-native";
 
 const defaultStackNavOption = {
   headerStyle: {
     backgroundColor: Platform.OS === "android" ? Colors.primaryColor : "",
+  },
+  headerTitleStyle:{
+    fontFamily:"open-sans-bold"
+  },
+  headerBackTitleStyle:{
+    fontFamily: "open-sans"
   },
   headerTintColor: Platform.OS === "android" ? "white" : Colors.primaryColor,
 };
@@ -58,6 +64,7 @@ const tabSreenConfig = {
         );
       },
       tabBarColor: Colors.primaryColor,
+      tabBarLabel:Platform.OS === "android" ? <Text style={{fontFamily:"open-sans-bold"}}> Meal</Text> : "Meal"
     },
   },
   Favourite: {
@@ -81,10 +88,12 @@ const MealsFavNavigator =
           //if shifting false tabbar colour goes lighter, barStyle property helps here.
           backgroundColor: Colors.primaryColor,
         },
+        
       })
     : createBottomTabNavigator(tabSreenConfig, {
         tabBarOptions: {
           activeTintColor: Colors.accentColor,
+          labelStyle:{fontFamily:"open-sans-bold"},
           inactiveTintColor: Colors.inactiveColor,
         },
       });
