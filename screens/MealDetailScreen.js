@@ -7,6 +7,17 @@ import HeaderButton from "../components/HeaderButton";
 import { ScrollView } from "react-native-gesture-handler";
 import DefaultText from "../components/DefaultText";
 
+const ListItem = (props) => {
+  return (
+    // <View style={styles.listItem}
+    //   <DefaultText>{props.children}</DefaultText>)
+    // </View>
+    <View style={styles.list}>
+    <DefaultText>{props.children}</DefaultText>
+  </View>
+  );
+};
+
 const MealDetailScreen = (props) => {
   const mealId = props.navigation.getParam("mealId");
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
@@ -21,11 +32,19 @@ const MealDetailScreen = (props) => {
       </View>
       <View style={styles.receipe}>
         <Text style={styles.title}>Ingredients:</Text>
-        {selectedMeal.ingredients.map(list=><Text key={list} style={styles.list}>{list}</Text>)}
-        
-        <Text style={styles.title}>Steps:</Text>
-        {selectedMeal.steps.map(list=><Text key={list} style={styles.list}>{list}</Text>)}
+        {selectedMeal.ingredients.map((list) => (
+          <Text key={list} style={styles.list}>
+            {list}
+          </Text>
+        ))}
 
+        <Text style={styles.title}>Steps:</Text>
+        {selectedMeal.steps.map((list) => (
+          <ListItem key={list}>{list}</ListItem>
+        ))}
+        {/* {selectedMeal.steps.map((step) => (
+          <ListItem key={step}>{step}</ListItem>
+        ))} */}
       </View>
     </ScrollView>
   );
@@ -71,15 +90,17 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: "open-sans-bold",
     fontSize: 18,
-    textAlign:"center"
+    textAlign: "center",
   },
   receipe: {
     marginHorizontal: 15,
     padding: 10,
   },
-  list:{
+  list: {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
     fontFamily: "open-sans",
-    fontSize: 16,
-    marginVertical:5,  
-  }
+    marginVertical: 5,
+    borderColor: '#ccc',
+    borderWidth:2,
+    padding:10
+  },
 });
