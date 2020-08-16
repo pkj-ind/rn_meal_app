@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton";
 import { StyleSheet, Text, View, Switch, Platform } from "react-native";
@@ -19,10 +19,27 @@ const FilterSwitch = (props) => {
 };
 
 const FilterScreen = (props) => {
+  const { navigation } = props; //Destructuring props
   const [isGlutenFree, setGlutenFree] = useState(false);
   const [isLactoseFree, setLactoseFree] = useState(false);
   const [isVegan, setVegan] = useState(false);
   const [isVegetarian, setVegetarian] = useState(false);
+
+  const saveFilters = useCallback(() => {
+    const appliedFilters = {
+      glutenFree: isGlutenFree,
+      lactoseFree: isLactoseFree,
+      vegan: isVegan,
+      isVegetarian: isVegetarian,
+    };
+
+    console.log(appliedFilters);
+  }, [isGlutenFree, isLactoseFree, isVegan, isVegetarian]);
+
+  // we can use set params to update the params values for the currently loaded screen using setParams.
+  useEffect(() => {
+    navigation.setParams({ save: saveFilters });
+  }, [saveFilters]);
   return (
     <View style={styles.screen}>
       <Text style={styles.title}>Avialable Filters / Restrictions</Text>
@@ -64,6 +81,19 @@ FilterScreen.navigationOptions = (navData) => {
         />
       </HeaderButtons>
     ),
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="Save"
+          iconName="save"
+          // onPress={() => {
+          //   navData.navigation.getParam("save")(); // putting () on function pointer, we are executing it
+          //   console.log("saving filter");
+          // }}
+          onPress={navData.navigation.getParam("save")}
+        />
+      </HeaderButtons>
+    ),
   };
 };
 export default FilterScreen;
@@ -84,6 +114,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     width: "80%",
-    marginVertical:10
+    marginVertical: 10,
   },
 });
