@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect, useCallback } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 
 // import { MEALS } from "../data/dummy-data";
@@ -6,7 +6,8 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton";
 import { ScrollView } from "react-native-gesture-handler";
 import DefaultText from "../components/DefaultText";
-import {useSelector} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleFavorite } from "../store/actions/meals";
 
 const ListItem = (props) => {
   return (
@@ -14,21 +15,27 @@ const ListItem = (props) => {
     //   <DefaultText>{props.children}</DefaultText>)
     // </View>
     <View style={styles.list}>
-    <DefaultText>{props.children}</DefaultText>
-  </View>
+      <DefaultText>{props.children}</DefaultText>
+    </View>
   );
 };
 
 const MealDetailScreen = (props) => {
-  const MEALS=useSelector(state => state.meals.meals)
+  const MEALS = useSelector((state) => state.meals.meals);
   const mealId = props.navigation.getParam("mealId");
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
-// passing meal name to navigation option so that we can display in Header Section, but there can be slight transition seen 
-//because useEffect runs after first render of componenet.
 
-  // useEffect(()=>{
-  //   props.navigation.setParams({mealTitle: selectedMeal.title})
-  // },[selectedMeal])
+  const dispatch = useDispatch();
+  const toggleFavoritHandler = useCallback(() => {
+    dispatch(toggleFavorite(mealId));
+  }, [dispatch, mealId]);
+  // passing meal name to navigation option so that we can display in Header Section, but there can be slight transition seen
+  //because useEffect runs after first render of componenet.
+
+  useEffect(() => {
+    props.navigation.setParams({ toggleFav: toggleFavoritHandler });
+    // props.navigation.setParams({mealTitle: selectedMeal.title})
+  }, [toggleFavoritHandler]);
   return (
     <ScrollView>
       <Image source={{ uri: selectedMeal.imageUrl }} style={styles.mealImage} />
@@ -59,7 +66,8 @@ const MealDetailScreen = (props) => {
 
 MealDetailScreen.navigationOptions = (navigateData) => {
   // const mealId = navigateData.navigation.getParam("mealId");
-  const mealTitle = navigateData.navigation.getParam("mealTitle")
+  const mealTitle = navigateData.navigation.getParam("mealTitle");
+  const toggleFavorite = navigateData.navigation.getParam("toggleFav");
   // const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
   return {
@@ -67,13 +75,7 @@ MealDetailScreen.navigationOptions = (navigateData) => {
     headerTitle: mealTitle,
     headerRight: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
-        <Item
-          title="Favourite"
-          iconName="favorite"
-          onPress={() => {
-            console.log("Mark as Favourite !!!");
-          }}
-        />
+        <Item title="Favourite" iconName="favorite" onPress={toggleFavorite} />
       </HeaderButtons>
     ),
   };
@@ -105,11 +107,11 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     padding: 10,
   },
-  list: {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+  list: {
     fontFamily: "open-sans",
     marginVertical: 5,
-    borderColor: '#ccc',
-    borderWidth:2,
-    padding:10
+    borderColor: "#ccc",
+    borderWidth: 2,
+    padding: 10,
   },
 });
