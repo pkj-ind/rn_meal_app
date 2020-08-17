@@ -1,7 +1,5 @@
 import React, { useEffect, useCallback } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
-
-// import { MEALS } from "../data/dummy-data";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton";
 import { ScrollView } from "react-native-gesture-handler";
@@ -11,9 +9,6 @@ import { toggleFavorite } from "../store/actions/meals";
 
 const ListItem = (props) => {
   return (
-    // <View style={styles.listItem}
-    //   <DefaultText>{props.children}</DefaultText>)
-    // </View>
     <View style={styles.list}>
       <DefaultText>{props.children}</DefaultText>
     </View>
@@ -24,6 +19,9 @@ const MealDetailScreen = (props) => {
   const MEALS = useSelector((state) => state.meals.meals);
   const mealId = props.navigation.getParam("mealId");
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+  const currentMealIsFavorite = useSelector((state) =>
+    state.meals.favoritMeals.some((meal) => meal.id === mealId)
+  );
 
   const dispatch = useDispatch();
   const toggleFavoritHandler = useCallback(() => {
@@ -36,6 +34,10 @@ const MealDetailScreen = (props) => {
     props.navigation.setParams({ toggleFav: toggleFavoritHandler });
     // props.navigation.setParams({mealTitle: selectedMeal.title})
   }, [toggleFavoritHandler]);
+
+  useEffect(() => {
+    props.navigation.setParams({ isFav: currentMealIsFavorite });
+  }, [currentMealIsFavorite]);
   return (
     <ScrollView>
       <Image source={{ uri: selectedMeal.imageUrl }} style={styles.mealImage} />
@@ -68,6 +70,7 @@ MealDetailScreen.navigationOptions = (navigateData) => {
   // const mealId = navigateData.navigation.getParam("mealId");
   const mealTitle = navigateData.navigation.getParam("mealTitle");
   const toggleFavorite = navigateData.navigation.getParam("toggleFav");
+  const isFavorite = navigateData.navigation.getParam("isFav");
   // const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
   return {
@@ -75,7 +78,11 @@ MealDetailScreen.navigationOptions = (navigateData) => {
     headerTitle: mealTitle,
     headerRight: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
-        <Item title="Favourite" iconName="favorite" onPress={toggleFavorite} />
+        <Item
+          title="Favourite"
+          iconName={isFavorite ? "favorite" : "favorite-border"}
+          onPress={toggleFavorite}
+        />
       </HeaderButtons>
     ),
   };
