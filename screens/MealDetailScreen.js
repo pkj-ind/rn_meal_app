@@ -23,10 +23,12 @@ const MealDetailScreen = (props) => {
   const MEALS=useSelector(state => state.meals.meals)
   const mealId = props.navigation.getParam("mealId");
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
-// passing meal name to navigation option so that we can display in Header Section.
-  useEffect(()=>{
-    props.navigation.setParams({mealTitle: selectedMeal.title})
-  },[selectedMeal])
+// passing meal name to navigation option so that we can display in Header Section, but there can be slight transition seen 
+//because useEffect runs after first render of componenet.
+
+  // useEffect(()=>{
+  //   props.navigation.setParams({mealTitle: selectedMeal.title})
+  // },[selectedMeal])
   return (
     <ScrollView>
       <Image source={{ uri: selectedMeal.imageUrl }} style={styles.mealImage} />
