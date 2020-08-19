@@ -4,7 +4,7 @@ import Meal from '../models/meal';
 export const CATEGORIES = [
   new Category('c1', 'Italian', '#f5428d'),
   new Category('c2', 'Quick & Easy', '#f54242'),
-  new Category('c3', 'Asian', '#b9ffb0'),
+  new Category('c3', 'Indian', '#b9ffb0'),
   new Category('c4', 'German', '#f5d142'),
   new Category('c5', 'Light & Lovely', '#368dff'),
   new Category('c6', 'Exotic', '#41d95d'),
