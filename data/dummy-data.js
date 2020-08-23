@@ -43,7 +43,8 @@ export const MEALS = [
     false,
     true,
     true,
-    true
+    true,
+    "https://www.youtube.com/watch?v=ErEy38dcCVg"
   ),
 
   new Meal(
@@ -69,7 +70,8 @@ export const MEALS = [
     false,
     false,
     false,
-    false
+    false,
+    ""
   ),
 
   new Meal(
@@ -98,7 +100,8 @@ export const MEALS = [
     false,
     false,
     false,
-    true
+    true,
+    ""
   ),
 
   new Meal(
@@ -131,7 +134,8 @@ export const MEALS = [
     false,
     false,
     false,
-    false
+    false,
+    ""
   ),
 
   new Meal(
@@ -162,8 +166,9 @@ export const MEALS = [
     ],
     true,
     false,
+    false,
     true,
-    true
+    ""
   ),
 
   new Meal(
@@ -196,7 +201,8 @@ export const MEALS = [
     true,
     false,
     true,
-    false
+    false,
+    ""
   ),
 
   new Meal(
@@ -251,12 +257,13 @@ export const MEALS = [
       'Add spices and stir fry',
       'Add chicken breast + 250ml of water and cook everything for 10 minutes',
       'Add coconut milk',
-      'Serve with rice'
+      'Serve with rice',
     ],
     true,
     false,
     false,
-    true
+    true,
+    "https://www.youtube.com/watch?v=a03U45jFxOI"
   ),
 
   new Meal(
@@ -303,7 +310,8 @@ export const MEALS = [
     true,
     false,
     true,
-    false
+    false,
+    "https://www.youtube.com/watch?v=XbO_qCNea3A"
   ),
   new Meal(
     'm10',
@@ -332,7 +340,8 @@ export const MEALS = [
     true,
     true,
     true,
-    true
+    true,
+    ""
   ),
   new Meal(
     'm11',
@@ -391,7 +400,7 @@ export const MEALS = [
     ['c3'],
     'Malai Methi Mutter',
     'affordable',
-    'Medium',
+    'Hard',
 	'https://www.yummyfoodrecipes.in/resources/picture/org/Matar-Malai.jpg',
     60,
     [
@@ -438,6 +447,7 @@ export const MEALS = [
     false,
     false,
    	true,
-    false
+    false,
+    ""
   )
 ];
