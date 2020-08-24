@@ -41,27 +41,29 @@ const MealDetailScreen = (props) => {
   }, [currentMealIsFavorite]);
   return (
     <ScrollView>
-          {selectedMeal.videoUrl === "" && (
-            <View>
-        <Image
-          source={{ uri: selectedMeal.imageUrl }}
-          style={styles.mealImage}
-        />
-        <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
-        <DefaultText>{selectedMeal.duration}m</DefaultText>
-        <DefaultText>{selectedMeal.complexity.toUpperCase()}</DefaultText>
-        <DefaultText>{selectedMeal.affordability.toUpperCase()}</DefaultText>
-      </View>
-      </View>
+      {selectedMeal.videoUrl === "" && (
+        <View>
+          <Image
+            source={{ uri: selectedMeal.imageUrl }}
+            style={styles.mealImage}
+          />
+          <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
+            <DefaultText>{selectedMeal.duration}m</DefaultText>
+            <DefaultText>{selectedMeal.complexity.toUpperCase()}</DefaultText>
+            <DefaultText>
+              {selectedMeal.affordability.toUpperCase()}
+            </DefaultText>
+          </View>
+          <Text style={{marginLeft:25, fontFamily:"open-sans-bold"}}>Currently video not available...</Text>
+        </View>
       )}
       {selectedMeal.videoUrl.length > 0 && (
-        <PlayYoutubeVideo videoId={selectedMeal.videoUrl.split("v=")[1]} imageUrl={selectedMeal.imageUrl}/>
+        <PlayYoutubeVideo
+          videoId={selectedMeal.videoUrl.split("v=")[1]}
+          imageUrl={selectedMeal.imageUrl}
+        />
       )}
-      {/* <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
-        <DefaultText>{selectedMeal.duration}m</DefaultText>
-        <DefaultText>{selectedMeal.complexity.toUpperCase()}</DefaultText>
-        <DefaultText>{selectedMeal.affordability.toUpperCase()}</DefaultText>
-      </View> */}
+
       <View style={styles.receipe}>
         <Text style={styles.title}>Ingredients:</Text>
         {selectedMeal.ingredients.map((list) => (

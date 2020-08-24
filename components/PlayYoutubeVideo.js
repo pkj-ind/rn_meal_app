@@ -31,7 +31,7 @@ const PlayYoutubeVideo = (props) => {
           videoId={props.videoId}
           play={playing}
           onChangeState={(event) => {
-            console.log(event);
+            // console.log(event);
             setCurrentEvent(event);
             if (event === "paused") {
               setPlaying(false);
@@ -41,7 +41,6 @@ const PlayYoutubeVideo = (props) => {
               }
           }}
           onReady={() => {
-            console.log("ready");
             setPlayerReady(true);
           }}
           onError={(e) => {
@@ -50,7 +49,7 @@ const PlayYoutubeVideo = (props) => {
             setCurrentEvent("unstarted");
             console.log(e);
           }}
-          onPlaybackQualityChange={(q) => console.log(q)}
+        //   onPlaybackQualityChange={(q) => console.log(q)}
           volume={50}
           playbackRate={1}
           playerParams={{
@@ -69,12 +68,12 @@ const PlayYoutubeVideo = (props) => {
       {(currentEvent === "playing" && !playerror ) && <Button title="Pause the video" onPress={() => {
         setCurrentEvent("paused")
         setPlaying(false)
-        console.log("Pausing the video...")
+        // console.log("Pausing the video...")
         }} />}
       {(currentEvent === "paused" && !playerror) && <Button title="Resume the video" onPress={() => {
         setCurrentEvent("playing")
         setPlaying(true)
-        console.log("Trying to resume the video...")
+        // console.log("Trying to resume the video...")
       }} />}
       {(currentEvent === "ended" && !playerror) && <Button title="Replay the video" onPress={() => {
         playerRef.current.seekTo(0,true);

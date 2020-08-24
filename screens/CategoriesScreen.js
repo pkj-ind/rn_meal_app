@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  FlatList,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, FlatList } from "react-native";
 // import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import CategoryGridTitle from "../components/CategoryGridTitle";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
@@ -38,7 +31,7 @@ const CategoriesScreen = (props) => {
             title="Menu"
             iconName="menu"
             onPress={() => {
-              navData.navigation.toggleDrawer(); 
+              navData.navigation.toggleDrawer();
             }}
           />
         </HeaderButtons>
