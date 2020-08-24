@@ -393,7 +393,8 @@ export const MEALS = [
     false,
     true,
 	  true,
-    false  
+    false,
+    ""
   ),
   new Meal(
     'm12',

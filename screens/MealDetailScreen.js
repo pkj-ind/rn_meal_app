@@ -6,6 +6,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import DefaultText from "../components/DefaultText";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleFavorite } from "../store/actions/meals";
+import PlayYoutubeVideo from "../components/PlayYoutubeVideo";
 
 const ListItem = (props) => {
   return (
@@ -40,12 +41,27 @@ const MealDetailScreen = (props) => {
   }, [currentMealIsFavorite]);
   return (
     <ScrollView>
-      <Image source={{ uri: selectedMeal.imageUrl }} style={styles.mealImage} />
-      <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
+          {selectedMeal.videoUrl === "" && (
+            <View>
+        <Image
+          source={{ uri: selectedMeal.imageUrl }}
+          style={styles.mealImage}
+        />
+        <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
         <DefaultText>{selectedMeal.duration}m</DefaultText>
         <DefaultText>{selectedMeal.complexity.toUpperCase()}</DefaultText>
         <DefaultText>{selectedMeal.affordability.toUpperCase()}</DefaultText>
       </View>
+      </View>
+      )}
+      {selectedMeal.videoUrl.length > 0 && (
+        <PlayYoutubeVideo videoId={selectedMeal.videoUrl.split("v=")[1]} imageUrl={selectedMeal.imageUrl}/>
+      )}
+      {/* <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
+        <DefaultText>{selectedMeal.duration}m</DefaultText>
+        <DefaultText>{selectedMeal.complexity.toUpperCase()}</DefaultText>
+        <DefaultText>{selectedMeal.affordability.toUpperCase()}</DefaultText>
+      </View> */}
       <View style={styles.receipe}>
         <Text style={styles.title}>Ingredients:</Text>
         {selectedMeal.ingredients.map((list) => (
