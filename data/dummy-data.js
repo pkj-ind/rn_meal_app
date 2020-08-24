@@ -231,7 +231,8 @@ export const MEALS = [
     true,
     false,
     true,
-    false
+    false,
+    ""
   ),
 
   new Meal(

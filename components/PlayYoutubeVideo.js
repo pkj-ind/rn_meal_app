@@ -16,7 +16,7 @@ const PlayYoutubeVideo = (props) => {
   const [currentEvent, setCurrentEvent] = useState("");
   const [playerReady, setPlayerReady] = useState(false);
   const errorMsg = (
-    <Text style={{ color: "red", marginHorizontal: 15, marginVertical: 5 }}>
+    <Text style={{ color: "red", marginHorizontal: 15, marginVertical: 5 , backgroundColor: "#f5f5f5"}}>
       Sorry for inconvienence, unable to play video at the moment. Request you to follow below written steps.
     </Text>
   );

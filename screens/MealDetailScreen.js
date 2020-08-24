@@ -54,7 +54,7 @@ const MealDetailScreen = (props) => {
               {selectedMeal.affordability.toUpperCase()}
             </DefaultText>
           </View>
-          <Text style={{marginLeft:25, fontFamily:"open-sans-bold"}}>Currently video not available...</Text>
+          <Text style={{marginLeft:25, fontFamily:"open-sans-bold"}}>Video will be made available soon...</Text>
         </View>
       )}
       {selectedMeal.videoUrl.length > 0 && (
