@@ -7,9 +7,9 @@ export const CATEGORIES = [
   new Category('c3', 'Indian', '#b9ffb0'),
   new Category('c4', 'German', '#f5d142'),
   new Category('c5', 'Light & Lovely', '#368dff'),
+  new Category('c8', 'Bakery', '#f5a442'),
   new Category('c6', 'Exotic', '#41d95d'),
-  new Category('c7', 'Breakfast', '#9eecff'),
-  new Category('c8', 'Hamburgers', '#f5a442'),
+  new Category('c7', 'Breakfast', '#9eecff'), 
   new Category('c9', 'French', '#ffc7ff'),
   new Category('c10', 'Summer', '#47fced')
 ];
@@ -49,58 +49,79 @@ export const MEALS = [
 
   new Meal(
     'm2',
-    ['c2'],
-    'Toast Hawaii',
+    ['c2','c3','c7'],
+    'Okra Fry',
     'affordable',
     'simple',
-    'https://cdn.pixabay.com/photo/2018/07/11/21/51/toast-3532016_1280.jpg',
-    10,
+    'https://i.imgur.com/Rk2R2SH.jpeg',
+    20,
     [
-      '1 Slice White Bread',
-      '1 Slice Ham',
-      '1 Slice Pineapple',
-      '1-2 Slices of Cheese',
-      'Butter'
+      '500 gm tender okra (Bhindi)',
+      '1 small chopped onion',
+      '2 cloves of garlic (optional)',
+      '1 tbsp of coking oil',
+      '1/2 tsp cumin seeds',
+      'Salt as per taste',
+      '1 Green chilli (Optional)',
+      '1/2 tsp turmeric powder (optional)',
+      '1 tsp garam masala (optional)'
     ],
     [
-      'Butter one side of the white bread',
-      'Layer ham, the pineapple and cheese on the white bread',
-      'Bake the toast for round about 10 minutes in the oven at 200°C'
+      'Wash tender okra and keep on kitchen towel or wipe out extra water.',
+      'Okra should and chopping knife should be dry to avoid stickiness',
+      'Chop okra into 1/2 inch (approx) pieces',
+      'Take a pan and heat 2 spoons of Ghee/oil. Once hot add cumin seeds and fry for 20-30 seconds',
+      'Add chopped onion, garlic and chilli and fry until onion turns slight brown.',
+      'Add chopped okra and fry on medium flame for 5-7 minutes without covering it.',
+      'Add turmeric, spices and keep cooking on medium flame with covering it for 5 minutes',
+      'Add salt and fry for further 2-3 minutes without covering it.',
+      'Serve with Roti/Bread'
     ],
-    false,
-    false,
-    false,
-    false,
+    true,
+    true,
+    true,
+    true,
     ""
   ),
 
   new Meal(
     'm3',
     ['c8'],
-    'Classic Hamburger',
-    'pricey',
+    'Aata Ginger Cookies',
+    'affordable',
     'simple',
-    'https://cdn.pixabay.com/photo/2014/10/23/18/05/burger-500054_1280.jpg',
+    'https://i.imgur.com/ngVqfK7.jpeg',
     45,
     [
-      '300g Cattle Hack',
-      '1 Tomato',
-      '1 Cucumber',
-      '1 Onion',
-      'Ketchup',
-      '2 Burger Buns'
+      '2 cups of Aata (Wheat flour)',
+      '3/4 cup Powder Sugar',
+      '2 inch of Grated Ginger',
+      '4/5 cup of Melted Butter at room temp',
+      '1 tsp of Baking powder',
+      '1/3 tsp of Baking soda',
+      '1 pinch of salt in case of unsalted Butter',
+      '3-5 tbsp of Milk'
     ],
     [
-      'Form 2 patties',
-      'Fry the patties for c. 4 minutes on each side',
-      'Quickly fry the buns for c. 1 minute on each side',
-      'Bruch buns with ketchup',
-      'Serve burger with tomato, cucumber and onion'
+      'Take a big mixing bowl and add all dry ingedients and mix it very well',
+      'For melting the butter, you can heat butter for 30 seconds in oven',
+      'Add grated ginger in melted butter and stir it well',
+      'Pour 3/4th of melted butter in mixing bowl and mix with hand very well',
+      'Add remaining butter and combine them well',
+      'Add 3 tbsp of milk and combine it well to make dough but do not knead them like bread/Roti/Pizza dough',
+      'In case your dough became sticky, keep it in freeze for 10 minutes',
+      'Now flatten with patting hand or  roll out slightly thick with roller',
+      'use cookies cutter to cut them in desired shape and shift them to baking try',
+      'Bake them 15-18 minutes on 180 degree celsius in preheated depends',
+      'You can bake in 2 slots if your oven is small but baking time will be almost same',
+      'Once cookies turn slightly golden or edges trun light brown, take out the try and allow it to cool',
+      'You can keep sauteing for additional few minutes for crispiness',
+      'To avoid stickiness do not add salt in the begining and dont cook putting lid for longer.'
     ],
-    false,
     false,
     false,
     true,
+    false,
     ""
   ),
 
@@ -230,7 +251,7 @@ export const MEALS = [
     ],
     true,
     false,
-    true,
+    false,
     false,
     ""
   ),
@@ -451,5 +472,31 @@ export const MEALS = [
    	true,
     false,
     ""
-  )
+  ),
+  new Meal(
+    'm12',
+    ['c2'],
+    'Toast Hawaii',
+    'affordable',
+    'simple',
+    'https://cdn.pixabay.com/photo/2018/07/11/21/51/toast-3532016_1280.jpg',
+    10,
+    [
+      '1 Slice White Bread',
+      '1 Slice Ham',
+      '1 Slice Pineapple',
+      '1-2 Slices of Cheese',
+      'Butter'
+    ],
+    [
+      'Butter one side of the white bread',
+      'Layer ham, the pineapple and cheese on the white bread',
+      'Bake the toast for round about 10 minutes in the oven at 200°C'
+    ],
+    false,
+    false,
+    false,
+    false,
+    ""
+  ),
 ];
