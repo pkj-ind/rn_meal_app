@@ -22,23 +22,6 @@ const CategoriesScreen = (props) => {
     );
   };
 
-  CategoriesScreen.navigationOptions = (navData) => {
-    return {
-      headerTitle: "Meal Categories",
-      headerLeft: () => (
-        <HeaderButtons HeaderButtonComponent={HeaderButton}>
-          <Item
-            title="Menu"
-            iconName="menu"
-            onPress={() => {
-              navData.navigation.toggleDrawer();
-            }}
-          />
-        </HeaderButtons>
-      ),
-    };
-  };
-
   return (
     <FlatList
       keyExtractor={(item, index) => item.id}
@@ -47,6 +30,23 @@ const CategoriesScreen = (props) => {
       renderItem={rederGridItem}
     />
   );
+};
+
+CategoriesScreen.navigationOptions = (navData) => {
+  return {
+    headerTitle: "Meal Categories",
+    headerLeft: () => (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="Menu"
+          iconName="menu"
+          onPress={() => {
+            navData.navigation.toggleDrawer();
+          }}
+        />
+      </HeaderButtons>
+    ),
+  };
 };
 
 export default CategoriesScreen;
