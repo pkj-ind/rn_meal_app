@@ -126,6 +126,7 @@ const MainNavigator = createDrawerNavigator(
         fontFamily:'open-sans-bold'
       }
     },
+    //  drawerPosition:  "right" 
   }
 );
 

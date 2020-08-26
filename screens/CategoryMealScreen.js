@@ -4,10 +4,12 @@ import {View, StyleSheet} from "react-native"
 import { CATEGORIES } from "../data/dummy-data";
 import MealList from "../components/MealList";
 import DefaultText from "../components/DefaultText"
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import HeaderButton from "../components/HeaderButton";
 
 const CategoryMealScreen = (props) => {
   const catId = props.navigation.getParam("categoryId");
-  const selectedCategory = CATEGORIES.find((ctg) => ctg.id === catId);
+  // const selectedCategory = CATEGORIES.find((ctg) => ctg.id === catId);
   const avblMeals = useSelector((state) => state.meals.filteredMeals);
   const displayedMeals = avblMeals.filter((meal) => {
     return meal.categoryIds.indexOf(catId) >= 0;
@@ -28,6 +30,17 @@ CategoryMealScreen.navigationOptions = (navigationData) => {
 
   return {
     headerTitle: selectedCategory.title,
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="Menu"
+          iconName="menu"
+          onPress={() => {
+            navigationData.navigation.toggleDrawer();
+          }}
+        />
+      </HeaderButtons>
+    )
   };
 };
 
