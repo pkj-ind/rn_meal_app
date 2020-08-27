@@ -36,7 +36,7 @@ const FilterScreen = (props) => {
       isVegetarian: isVegetarian,
     };
     dispatch(setFilters(appliedFilters))
-    console.log(appliedFilters);
+    // console.log(appliedFilters);
   }, [isGlutenFree, isLactoseFree, isVegan, isVegetarian]);
 
   // we can use set params to update the params values for the currently loaded screen using setParams.

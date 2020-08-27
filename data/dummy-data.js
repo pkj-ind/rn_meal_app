@@ -2,16 +2,16 @@ import Category from '../models/category';
 import Meal from '../models/meal';
 
 export const CATEGORIES = [
-  new Category('c1', 'Italian', '#f5428d'),
-  new Category('c2', 'Quick & Easy', '#f54242'),
-  new Category('c3', 'Indian', '#b9ffb0'),
-  new Category('c4', 'German', '#f5d142'),
-  new Category('c5', 'Light & Lovely', '#368dff'),
-  new Category('c8', 'Bakery', '#f5a442'),
-  new Category('c6', 'Exotic', '#41d95d'),
-  new Category('c7', 'Breakfast', '#9eecff'), 
-  new Category('c9', 'French', '#ffc7ff'),
-  new Category('c10', 'Summer', '#47fced')
+  new Category('c1', 'Italian', '#f5428d','https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTV3s4FbYs8863iN9LbwgpXXKKV1z73nSL7sg&usqp=CAU'),
+  new Category('c2', 'Quick & Easy', '#f54242','https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTyRWkss9HGXU8wIwYesxGjK6owuJZicfl3aA&usqp=CAU'),
+  new Category('c3', 'Indian', '#b9ffb0','https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTSUe548fxjFDeYSeOETahEePYuUfE6zDedxw&usqp=CAU'),
+  new Category('c4', 'German', '#f5d142','https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQFZddWf8gsb7jbrbGCJIDdZuVgCqwJgi9mtQ&usqp=CAU'),
+  new Category('c5', 'Light & Lovely', '#368dff','https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR3QkV0EYgQonc7cVfQEU8ZedseZWSTNqh1fA&usqp=CAU'),
+  new Category('c8', 'Bakery', '#f5a442','https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS63xLV5saNM48q9Zp4NIQ0JpO4j0lat5KQiQ&usqp=CAU'),
+  new Category('c6', 'Desserts', '#41d95d','https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQnYjD6mXyIjNuwBBWvTzy6W2wWo9QgANwizQ&usqp=CAU'),
+  new Category('c7', 'Breakfast', '#9eecff','https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg-LD64M3T-wcN2SpT_nDVjyGHGdIhqWup3w&usqp=CAU'), 
+  new Category('c9', 'French', '#ffc7ff','https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRTMGpks8sWlOBBxB4rgo-5J0XQZuisvF4PJg&usqp=CAU'),
+  new Category('c10', 'Summer', '#47fced','https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSFk601_xNI8cFrWp3q1PYhgb5gK-70g9HS4w&usqp=CAU')
 ];
 
 export const MEALS = [

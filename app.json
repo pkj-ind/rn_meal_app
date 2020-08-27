@@ -22,7 +22,7 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "",
+    "description": "It is an application, where user can find recipes of world's famous meal. It is like open kitchen not limited to a chef. You can find the best recipes from different chefs along with their details.",
     "githubUrl": "https://github.com/pkj-ind/rn_meal_app"
   }
 }
