@@ -68,9 +68,9 @@ export const MEALS = [
     ],
     [
       'Wash tender okra and keep on kitchen towel or wipe out extra water.',
-      'Okra should and chopping knife should be dry to avoid stickiness',
-      'Chop okra into 1/2 inch (approx) pieces',
-      'Take a pan and heat 2 spoons of Ghee/oil. Once hot add cumin seeds and fry for 20-30 seconds',
+      'Okra and chopping knife should be dry to avoid stickiness',
+      'Chop okra into 1/2 inch pieces',
+      'Take a pan and heat 2 spoons of cooking oil. Once hot add cumin seeds and fry for 20-30 seconds',
       'Add chopped onion, garlic and chilli and fry until onion turns slight brown.',
       'Add chopped okra and fry on medium flame for 5-7 minutes without covering it.',
       'Add turmeric, spices and keep cooking on medium flame with covering it for 5 minutes',
@@ -424,7 +424,7 @@ export const MEALS = [
     'Malai Methi Mutter',
     'affordable',
     'Hard',
-	'https://www.yummyfoodrecipes.in/resources/picture/org/Matar-Malai.jpg',
+    'https://upload.wikimedia.org/wikipedia/commons/5/54/Methi_Malai_Matar.jpg',
     60,
     [
       '2 bowls of Fresh Methi(Fenugreek)',
